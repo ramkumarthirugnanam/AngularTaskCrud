@@ -33,24 +33,27 @@
     </div>
 
 
+
+
+
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="assigned_date" [(ngModel)]="data.assigned_date" name="assigned_date">
+        <input matInput placeholder="assigned_date" [(ngModel)]="data.suggested_solution" name="suggested_solution">
       </mat-form-field>
     </div>
 
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput placeholder="suggested_solution" [(ngModel)]="data.assigned_date" name="assigned_date">
+      </mat-form-field>
+    </div>
+    
     <div class="form">
       <mat-form-field color="accent">
         <input matInput placeholder="closing_date" [(ngModel)]="data.closing_date" name="closing_date">
       </mat-form-field>
     </div>
-
-    
-    <!-- <div class="form">
-      <mat-form-field color="accent">
-        <input matInput placeholder="suggested_solution" [(ngModel)]="data.suggested_solution" name="suggested_solution">
-      </mat-form-field>
-    </div> -->
+  
 
     <div mat-dialog-actions>
       <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="stopEdit()">Save</button>

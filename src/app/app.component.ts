@@ -19,7 +19,7 @@ import {map} from 'rxjs/operators';
 })
 
 export class AppComponent implements OnInit {
-  displayedColumns = ['id', 'name', 'priority', 'description', 'assigneddate', 'closeingdate', 'actions'];
+  displayedColumns = ['id', 'name', 'priority', 'description', 'assigned_date', 'closing_date', 'actions'];
   exampleDatabase: DataService | null;
   dataSource: ExampleDataSource | null;
   index: number;
@@ -185,14 +185,16 @@ export class ExampleDataSource extends DataSource<Task> {
     return data.sort((a, b) => {
       let propertyA: number | string = '';
       let propertyB: number | string = '';
+      let propertyC : boolean
 
       switch (this._sort.active) {
         case 'id': [propertyA, propertyB] = [a.id, b.id]; break;
         case 'name': [propertyA, propertyB] = [a.name, b.name]; break;
         case 'desc': [propertyA, propertyB] = [a.description, b.description]; break;
-       // case 'priority': [propertyA, propertyB] = [a.priority, b.priority]; break;
+        case 'priority': propertyC;  break;
        // case 'assigneddate': [propertyA, propertyB] = [a, b]; break;
        // case 'updated_at': [propertyA, propertyB] = [a, b]; break;
+       //case 'assignee': [propertyA, propertyB] = [a.assignee, b.assignee]; break;
       }
 
       const valueA = isNaN(+propertyA) ? propertyA : +propertyA;

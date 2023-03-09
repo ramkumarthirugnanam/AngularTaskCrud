@@ -21,6 +21,7 @@ export class AddDialogComponent {
               @Inject(MAT_DIALOG_DATA) public data: Task,
               public dataService: DataService , private fb: FormBuilder ) { }
 
+
   formControl = new FormControl('', [
     Validators.required
     // Validators.email,
@@ -37,7 +38,6 @@ export class AddDialogComponent {
   //  })
 
   }
-
 
   getErrorMessage() {
     return this.formControl.hasError('required') ? 'Required field' :

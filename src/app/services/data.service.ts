@@ -10,6 +10,8 @@ export class DataService {
   dataChange: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>([]);
   // Temporarily stores data from dialogs
   dialogData: any;
+  assignee: any;
+  postdata: any
 
   constructor (private http: HttpClient) {}
 
@@ -34,14 +36,20 @@ export class DataService {
   // DEMO ONLY, you can find working methods below
   addTask (task: Task): void {
     const headers = { 'content-type': 'application/json'}  
-    const body=JSON.stringify(task);
-    this.http.post(this.API_URL, body,{'headers':headers }).subscribe(data => {
+    const body = JSON.stringify(task);
+   console.log("body..",body)
+
+    this.http.post(this.API_URL,body ,{'headers':headers }).subscribe(data => {
       console.log(data);
     });
   }
 
   updateTask (task : Task , id: number): void {
-    this.dialogData = task;
+    this.http.post(this.API_URL,task).subscribe(data => {
+      console.log(data);
+      this.dialogData = task;
+
+    });
   }
 
   deleteTask (id: number): void {
